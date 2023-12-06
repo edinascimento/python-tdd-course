@@ -1,6 +1,5 @@
 db.sqlite3
 geckodriver.log
 *.py
-
 __pycache__ echo *.pyc
 __pycache__ echo *.pyc
