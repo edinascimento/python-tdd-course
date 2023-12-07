@@ -22,12 +22,12 @@ class NewVisitorTest(unittest.TestCase):
         # She notices  the page title and header mention to-do lists
         self.assertIn('To-Do', self.browser.title)
         expectedText = self.browser.find_element(By.TAG_NAME, 'h1').text
-        self.assertEqual('To-Do', expectedText)
+        self.assertEqual('Your To-Do lists', expectedText)
         
 
         # She is invited to enter a to-do item straitght a way
         inputbox = self.browser.find_element(By.ID,'add_new_item')
-        self.asserEqual(
+        self.assertEqual(
             inputbox.get_attribute('placeholder'),
             'Enter a to-do item'
         )
@@ -44,7 +44,8 @@ class NewVisitorTest(unittest.TestCase):
         table = self.browser.find_element(By.ID, 'id_list_table')
         rows = table.find_elements(By.TAG_NAME, 'tr')
         self.assertTrue(
-            any(row.text == 'Buy peacock feathers' for row in rows)
+            any(row.text == 'Buy peacock feathers' for row in rows),
+            'New to-do item did not appear in table'
         )
 
         # There is still a text box inviting her to add anothe item. She
